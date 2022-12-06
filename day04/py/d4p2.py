@@ -8,7 +8,7 @@ for i,line in enumerate(lines):
 
     overlap=list(set(range(sec1[0],sec1[1]+1)) & set(range(sec2[0],sec2[1]+1))) #find the intersection
 
-    if(len(overlap)>0): #incrememnt if >1
+    if(len(overlap)>0): #incrememnt if >0
         acc+=1
         # print(line,overlap)
 
