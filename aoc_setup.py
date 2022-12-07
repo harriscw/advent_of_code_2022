@@ -12,7 +12,7 @@ def folder_setup(i):
         os.makedirs(day+"/py") #make subdir
 
         #initialize with some data read code
-        outstring = 'text_file = open("../input.txt", "r")\nlines = [v.strip("\\n") for v in text_file.readlines()]\n'
+        outstring = 'text_file = open("../input.txt", "r")\nlines = [v.strip("\\n") for v in text_file.readlines()]\nprint(lines)\n'
 
         for j in range(1,3): #make some python empty shell programs
             file=day+"/py/d"+i+"p"+str(j)+".py" #define filename
