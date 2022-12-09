@@ -1,7 +1,7 @@
 text_file = open("../input.txt", "r")
 lines = [v.strip("\n") for v in text_file.readlines()]
 
-def can_be_seen(thisone,prior,lines,i,j):
+def can_be_seen(thisone,prior,lines,i,j): #can the tree be seen
     if(i==0 or j==0): #if tree is in the first row or column
         return(True)
     elif(i==len(lines)-1 or j==len(lines[0])-1): #if tree is in the last row or column
