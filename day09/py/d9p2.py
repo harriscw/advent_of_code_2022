@@ -48,3 +48,13 @@ for i,line in enumerate(lines): ## OK now move the snake
         coord_list.append((snake[9][0],snake[9][1])) #add tail coordinate to list of coordinates tail has visited
 
 print("Part 2:",len(list(set(coord_list))))
+
+# Do a visualization
+x=[coord[0] for coord in coord_list]
+y=[coord[1] for coord in coord_list]
+
+import matplotlib.pyplot as plt
+
+plt.plot(x,y)
+plt.plot(0,0,"x",markersize=15)
+plt.savefig('snaketail.png')
