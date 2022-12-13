@@ -34,6 +34,7 @@ while theround<=10000: #go for 10000 rounds
         m_d[monkey]["inspections"]+=1 #keep track of inspections
         new=eval(m_d[monkey]["operation"]) #evaluate operation
         new, d = divmod(new, 1) #get floor
+        
         #------------begin cheat portion
         new=new % prod
         #------------end cheat portion
