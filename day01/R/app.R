@@ -10,6 +10,7 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
+library(plotly)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -20,7 +21,7 @@ ui <- fluidPage(
   uiOutput("postload")
     ),
   mainPanel(
-    plotOutput("theplot")
+    plotlyOutput("theplot")
     )
   )
   
@@ -64,7 +65,7 @@ server <- function(input, output) {
     sum(tail(sort(bundles()),3))
     })
   
-  output$theplot=renderPlot({
+  output$theplot=renderPlotly({
     req(bundles(),input$file)
     
     bundles=bundles()
@@ -94,7 +95,7 @@ server <- function(input, output) {
         labs(caption="Top bundle in blue")
       
     }
-    p
+    ggplotly(p)
     }
     
   })
