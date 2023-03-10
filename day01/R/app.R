@@ -21,7 +21,10 @@ ui <- fluidPage(
   uiOutput("postload")
     ),
   mainPanel(
-    plotlyOutput("theplot")
+    tabsetPanel(
+      tabPanel("Barplot",plotlyOutput("theplot")),
+      tabPanel("Heatmap",plotlyOutput("heatmap"))
+    )
     )
   )
   
@@ -96,6 +99,29 @@ server <- function(input, output) {
       
     }
     ggplotly(p)
+    }
+    
+  })
+  
+  output$heatmap = renderPlotly({
+    
+    req(bundles())
+    
+    if(!is.null(input$sort)){
+      if(input$sort){
+        mat = matrix(sort(bundles(),decreasing = TRUE),ncol=10)
+      }else{
+        mat = matrix(bundles(),ncol=10)
+      }
+      
+    plot_ly(z = mat, 
+            type = "heatmap",
+            hoverinfo="text",
+            text = mat
+            ) %>% 
+      layout(xaxis= list(showticklabels = FALSE),
+             yaxis= list(showticklabels = FALSE)
+             )
     }
     
   })

@@ -5,10 +5,10 @@ account: harriscw
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8526363
-bundleId: 6937963
+bundleId: 6942529
 url: https://harriscw.shinyapps.io/aoc2022d1/
-when: 1678387567.95103
-lastSyncTime: 1678387567.95103
+when: 1678468777.43933
+lastSyncTime: 1678468777.43933
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: d1.R|README.md
