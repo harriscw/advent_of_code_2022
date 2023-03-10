@@ -107,11 +107,20 @@ server <- function(input, output) {
     
     req(bundles())
     
+    bundles=bundles()
+    footnote=""
+    
+    if((length(bundles) %% 10)>0){
+      numtoadd=((floor(length(bundles)/10)+1)*10) - length(bundles)
+      bundles=c(bundles,rep(0,numtoadd))
+      footnote="Elves with bundle values 0 added to make matrix rectangular"
+    }
+    
     if(!is.null(input$sort)){
       if(input$sort){
-        mat = matrix(sort(bundles(),decreasing = TRUE),ncol=10)
+        mat = matrix(sort(bundles,decreasing = TRUE),ncol=10)
       }else{
-        mat = matrix(bundles(),ncol=10)
+        mat = matrix(bundles,ncol=10)
       }
       
     plot_ly(z = mat, 
@@ -120,7 +129,13 @@ server <- function(input, output) {
             text = mat
             ) %>% 
       layout(xaxis= list(showticklabels = FALSE),
-             yaxis= list(showticklabels = FALSE)
+             yaxis= list(showticklabels = FALSE),
+             annotations = 
+               list(x = 0, y = -.1, 
+                    text = footnote, 
+                    showarrow = F, 
+                    xref='paper', 
+                    yref='paper')
              )
     }
     
